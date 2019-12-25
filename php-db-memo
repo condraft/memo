@@ -1,3 +1,7 @@
 new PDO=PHP Data Object
 PDO('接続文字列（ｄｂに接続するときの場所や指定)',user,pass)
 try{処理} catch{処理}エラー除け（例外処理）
+sqlの実行 exec内の'' と ""は使い分ける
+$db->exec('INSERT INTO my_items SET maker_id=1, item_name="もも',
+price=210,keyword="缶詰,ピンク,甘い"')
+データベースに影響を与えた行数分だけの返り値がある
