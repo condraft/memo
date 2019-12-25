@@ -1,0 +1,3 @@
+new PDO=PHP Data Object
+PDO('接続文字列（ｄｂに接続するときの場所や指定)',user,pass)
+try{処理} catch{処理}エラー除け（例外処理）
