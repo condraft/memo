@@ -17,21 +17,11 @@
 
 <main>
 <h2>Practice</h2>
-<pre>
-<?php
-try{
-    $db = new PDO('mysql:dbname=mydb;host=127.0.0.1;charset=utf8',
-    'root', '');
-} catch(PDOExeption $e) {
-    echo 'DB接続エラー：' . $e->getMessage();
-}
 
-$records = $db->query('SELECT * FROM my_items');
-while($record = $records->fetch()){
-    print($record['item_name'] . "\n");
-}
-?>
-</pre>
+<form action="input_do.php" method="post">
+    <textarea name="memo" cols="50" rows="10" placeholder="自由にメモをのこしてください"></textarea><br>
+    <button type="submit">登録する</button> 
+</form>
 </main>
 </body>    
 </html>

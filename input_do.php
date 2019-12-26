@@ -19,17 +19,15 @@
 <h2>Practice</h2>
 <pre>
 <?php
-try{
-    $db = new PDO('mysql:dbname=mydb;host=127.0.0.1;charset=utf8',
-    'root', '');
-} catch(PDOExeption $e) {
-    echo 'DB接続エラー：' . $e->getMessage();
-}
+    try{
+        $db = new PDO('mysql:dbname=mydb;host=127.0.0.1;charset=utf8',
+        'root', '');
 
-$records = $db->query('SELECT * FROM my_items');
-while($record = $records->fetch()){
-    print($record['item_name'] . "\n");
-}
+        $db->exec('INSERT INTO memos SET memo="' . $_POST['memo']")
+    } catch(PDOExeption $e) {
+        echo 'DB接続エラー：' . $e->getMessage();
+    }
+
 ?>
 </pre>
 </main>
