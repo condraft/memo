@@ -21,12 +21,13 @@
 <?php
     require('dbconnect.php');
     
-    $statement = $db->prepare('INSERT INTO memos SET memo=?, created_at=NOW()');
-    $statement->bindParam(1, $_POST['memo']);
-    $statement->execute();
-    echo 'メッセージが登録されました';
+    $statement = $db->prepare('UPDATE memos SET memo=? WHERE id=?');
+    $statement->execute(array($_POST['memo'], $_POST['id']));
+
 ?>
+<p>メモの内容を変更しました</p>
 </pre>
+<p><a href="index.php">戻る</a></p>
 </main>
 </body>    
 </html>

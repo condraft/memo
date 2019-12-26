@@ -21,12 +21,16 @@
 <?php
     require('dbconnect.php');
     
-    $statement = $db->prepare('INSERT INTO memos SET memo=?, created_at=NOW()');
-    $statement->bindParam(1, $_POST['memo']);
-    $statement->execute();
-    echo 'メッセージが登録されました';
+    if(isset($_REQUEST['id']) && is_numeric($_REQUEST['id'])){
+        $id = $_REQUEST['id']; 
+    
+        $statement = $db->prepare('DELETE FROM memos WHERE id=?');
+        $statement->execute(array($id));
+    }
 ?>
+<p>メモの内容を削除しました</p>
 </pre>
+<p><a href="index.php">戻る</a></p>
 </main>
 </body>    
 </html>

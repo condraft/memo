@@ -19,12 +19,7 @@
 <h2>Practice</h2>
 
 <?php
-try{
-    $db = new PDO('mysql:dbname=mydb;host=127.0.0.1;charset=utf8',
-    'root', '');
-} catch(PDOExeption $e) {
-    echo 'DB接続エラー：' . $e->getMessage();
-}
+require('dbconnect.php');
 
 $id = $_REQUEST['id'];
 if (!is_numeric($id) || $id <= 0){
@@ -40,6 +35,11 @@ $memo = $memos->fetch();
 <article>
     <pre><?php print($memo['memo']); ?></pre>
 
+
+    <a href="update.php?id=<?php print($memo['id']); ?>">編集する</a>
+    |
+    <a href="delete.php?id=<?php print($memo['id']); ?>">削除する</a>
+    |
     <a href='index.php'>戻る</a>
 </article>
 
