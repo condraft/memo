@@ -24,9 +24,9 @@
         'root', '');
 
         $statement = $db->prepare('INSERT INTO memos SET memo=?, created_at=NOW()');
-
-        $db->exec('INSERT INTO memos SET memo="' . $_POST['memo']
-        . '", created_at=NOW()');
+        $statement->bindParam(1, $_POST['memo']);
+        $statement->execute();
+        echo 'メッセージが登録されました';
     } catch(PDOExeption $e) {
         echo 'DB接続エラー：' . $e->getMessage();
     }
